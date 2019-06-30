@@ -13,7 +13,7 @@ parallyzer is a poor mans php tool for running multiple, non-blocking (php-)scri
 ## installation
 
 ```bash
-composer require vielhuber/dbhelper
+composer require vielhuber/parallyzer
 ```
 
 ```php
