@@ -1,0 +1,6 @@
+{
+    "name": "vielhuber/stringhelper",
+    "description": "A poor mans php tool for running multiple, non-blocking (php-)scripts.",
+    "require": { "php": ">=5.6" },
+    "license": "MIT"
+}
