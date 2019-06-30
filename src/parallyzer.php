@@ -1,4 +1,6 @@
 <?php
+namespace vielhuber\parallyzer;
+
 class parallyzer
 {
     public $commands = null;
