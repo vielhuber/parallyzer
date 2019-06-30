@@ -8,5 +8,5 @@
             "vielhuber\\parallyzer\\": "src/",
             "Tests\\": "tests/"
         }
-    },
+    }
 }
