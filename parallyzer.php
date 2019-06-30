@@ -40,7 +40,7 @@ class parallyzer
     private function createLogDir()
     {
         if (!is_dir($this->getLogDir())) {
-            mkdir($this->getLogDir());
+            @mkdir($this->getLogDir());
         }
     }
 
@@ -103,25 +103,6 @@ class parallyzer
                 'log' => $log_file,
                 'pid' => $pid
             ];
-            /*
-            $pipes = [];
-            $descr = [
-                0 => ['pipe', 'r'],
-                1 => ['pipe', 'w'],
-                2 => ['pipe', 'w']
-            ];
-            $process = proc_open(
-                $commands__value['cmd'] . ' > ' . $log_file . ' 2>&1 & ',
-                $descr,
-                $pipes
-            );
-            $status = proc_get_status($process);
-            $this->tasks[] = [
-                'cmd' => $commands__value['cmd'],
-                'log' => $log_file,
-                'pid' => $status['pid'] + 1
-            ];
-            */
         }
     }
 
@@ -138,7 +119,6 @@ class parallyzer
                 }
                 break;
             }
-            //print_r($this->tasks);
             sleep($this->observe_interval);
             foreach ($this->tasks as $tasks__key => $tasks__value) {
                 if (file_exists($tasks__value['log'])) {
@@ -171,11 +151,7 @@ class parallyzer
 
     private function isRunning($pid)
     {
-        if ($this->getOs() === 'windows') {
-            // TODO
-        } else {
-            return shell_exec('ps aux | grep ' . $pid . ' | grep -v grep | wc -l') > 0;
-        }
+        return shell_exec('ps aux | grep ' . $pid . ' | grep -v grep | wc -l') > 0;
     }
 
     private function getOs()
@@ -192,9 +168,3 @@ class parallyzer
         return 'unknown';
     }
 }
-
-$p = new parallyzer();
-$p->add('php test.php', 100);
-$p->observe(20);
-//$p->log('logs');
-$p->run();

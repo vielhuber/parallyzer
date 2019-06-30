@@ -1,0 +1,8 @@
+(Win32_Process)->Create() wird ausgefhrt
+Methode wurde ausgefhrt.
+Ausgabeparameter:
+instance of __PARAMETERS
+{
+	ProcessId = 11400;
+	ReturnValue = 0;
+};
